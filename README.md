@@ -22,7 +22,7 @@ namespace QFramework.Example
 {
 	using UnityEngine;
 
-	class Class2Singleton :QSingleton<Class2Singleton>
+	class Class2Singleton :Singleton<Class2Singleton>
 	{
 		private static int mIndex = 0;
 
@@ -39,7 +39,7 @@ namespace QFramework.Example
 		}
 	}
 	
-	public class Singleton : MonoBehaviour
+	public class SingletonExample : MonoBehaviour
 	{
 		private void Start()
 		{
@@ -63,7 +63,7 @@ namespace QFramework.Example
 	using System.Collections;
 	using UnityEngine;
 	
-	class Class2MonoSingleton : QMonoSingleton<Class2MonoSingleton>
+	class Class2MonoSingleton : MonoSingleton<Class2MonoSingleton>
 	{
 		public override void OnSingletonInit()
 		{
@@ -101,7 +101,7 @@ namespace QFramework.Example
 	{
 		public static Class2SignetonProperty Instance
 		{
-			get { return QSingletonProperty<Class2SignetonProperty>.Instance; }
+			get { return SingletonProperty<Class2SignetonProperty>.Instance; }
 		}
 
 		private Class2SignetonProperty() {}
@@ -138,7 +138,7 @@ namespace QFramework.Example
 	{
 		public static Class2MonoSingletonProperty Instance
 		{
-			get { return QMonoSingletonProperty<Class2MonoSingletonProperty>.Instance; }
+			get { return MonoSingletonProperty<Class2MonoSingletonProperty>.Instance; }
 		}
 		
 		public void Dispose()
@@ -174,29 +174,24 @@ namespace QFramework.Example
 ``` csharp
 namespace QFramework.Example
 {
-	using UnityEngine;
+    using UnityEngine;
+    using QFramework;
 
-	[QMonoSingletonPath("[Example]/QMonoSingeltonPath")]
-	class ClassUseMonoSingletonPath : QMonoSingleton<ClassUseMonoSingletonPath>
-	{
+    [MonoSingletonPath("[Example]/QMonoSingeltonPath")]
+    class ClassUseMonoSingletonPath : MonoSingleton<ClassUseMonoSingletonPath>
+    {
 		
-	}
+    }
 	
-	public class MonoSingletonPath : MonoBehaviour
-	{
-		private void Start()
-		{
-			var intance = ClassUseMonoSingletonPath.Instance;
-		}
-	}
+    public class MonoSingletonPathExample : MonoBehaviour
+    {
+        private void Start()
+        {
+            var intance = ClassUseMonoSingletonPath.Instance;
+        }
+    }
 }
 ```
 结果:
 
-![](http://liangxiegame.com/content/images/2017/07/-----2017-07-27-22-32-28.png)
-
-
-
-
-
-#### FeatureId:CUDS001
+![image.png](http://file.liangxiegame.com/fd3eabc2-ce61-487f-a46f-3fbc7029b8aa.png) 
